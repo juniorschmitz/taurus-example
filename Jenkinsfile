@@ -6,9 +6,7 @@ pipeline {
     }
     stages {
         stage("Build") {
-            steps {
-                //
-            }
+          echo "Rodando build..."
         }
         stage("Tests") {
             steps {
