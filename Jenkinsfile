@@ -1,10 +1,10 @@
 pipeline {
-    agent {
-      any
+  agent any
+    // agent {
         // docker {
             // image "blazemeter/taurus"
         // }
-    }
+    // }
     stages {
         stage("Tests") {
             steps {
