@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage("Tests") {
             steps {
+              sh "mv example.yml /home"
               dir(path: '/home') {
                 script{
                   try {
