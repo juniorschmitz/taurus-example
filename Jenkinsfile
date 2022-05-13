@@ -8,12 +8,14 @@ pipeline {
     stages {
         stage("Tests") {
             steps {
-              script{
-                try {
-                  sh "bzt example.yml"
-                } finally {
-                  junit 'report.xml'
-                  cleanWs()
+              dir(path: '/home') {
+                script{
+                  try {
+                    sh "bzt example.yml"
+                  } finally {
+                    junit 'report.xml'
+                    cleanWs()
+                  }
                 }
               }
             }
