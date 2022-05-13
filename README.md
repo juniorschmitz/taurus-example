@@ -28,3 +28,10 @@ docker run --rm -v c//<path_to_your_scripts_directory>:/bzt-configs -v <path_to_
 ```
 
 ## Como executar com Jenkins + Docker in Docker?
+Inicialmente criar o projeto Jenkins com as configurações para executar apontando para o script Jenkinsfile deste projeto.
+Para que a execução aconteça, o Jenkins Server precisa ter o plugin de Docker Pipelines instalado e devidamente configurado.
+A imagem Docker utilizada para a execução é a blazemeter/taurus, para que sua execução aconteça é necessário reescrever o ENTRYPOINT.
+Jenkins Server pode necessitar de permissão de root dependendo das configurações de pasta utilizadas.
+
+## Como executar com Jenkins + Docker run command?
+Da mesma forma que seria utilizado o comando Docker local, porém considerando o ambiente Jenkins, utilizar o caminho relativo para o projeto (pwd) e passar os scripts que serão executados para o comando shell.
