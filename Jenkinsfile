@@ -2,6 +2,7 @@ pipeline {
     agent {
         docker {
             image "blazemeter/taurus"
+            args '--entrypoint='
         }
     }
     stages {
