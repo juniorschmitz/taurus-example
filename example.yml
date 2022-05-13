@@ -11,5 +11,5 @@ scenarios:
 
 reporting:
 - module: junit-xml
-  filename: /reports/report.xml
+  filename: /tmp/artifacts/report.xml
   data-source: pass-fail
