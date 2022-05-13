@@ -10,11 +10,6 @@ scenarios:
     - http://blazedemo.com
 
 reporting:
-- module: final-stats
-  summary: true
-  percentiles: true
-  summary-labels: false
-  failed-labels: false
-  test-duration: true
-  dump-xml: report.xml
-  dump-csv: report.csv
+- module: junit-xml
+  filename: /reports/report.xml
+  data-source: pass-fail
