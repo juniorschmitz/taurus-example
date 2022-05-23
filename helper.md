@@ -1,5 +1,3 @@
-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
-
 sudo usermod -aG docker jenkins
 
 

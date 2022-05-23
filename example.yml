@@ -2,15 +2,18 @@ execution:
 - concurrency: 100
   ramp-up: 30s
   hold-for: 1m
-  scenario: apiblaze
+  scenario: siteblaze
   criteria: 
-  - fail>0%
-  - avg-rt>1s
-
+    - fail>0%
+    - avg-rt>1s
+  
 scenarios:
   siteblaze:
     requests:
     - http://blazedemo.com
+    # criteria: 
+    #   - fail>0%
+    #   - avg-rt>1s
 
   apiblaze:
     requests:
@@ -21,15 +24,11 @@ scenarios:
       assert:
         - contains: Items
           regex: false
-      # assert-jsonpath:
-      # - jsonpath: '$.Items[1].img'
-      #   expected-value: 'imgs/Lumia_1520.jpg'
 
-reporting:
-- module: junit-xml
-  filename: report.xml
-  
 reporting:
 - module: passfail
   criteria:
-    Response Time Too High: avg-rt>50ms
+    Response Time Too High: avg-rt>300ms
+- module: junit-xml
+  filename: report.xml
+  data-source: pass-fail
