@@ -2,14 +2,33 @@ execution:
 - concurrency: 100
   ramp-up: 30s
   hold-for: 1m
-  scenario: load-example
-
+  scenario: siteblaze
+  criteria: 
+    - fail>0%
+    - avg-rt>1s
+  
 scenarios:
-  load-example:
+  siteblaze:
     requests:
     - http://blazedemo.com
+    # criteria: 
+    #   - fail>0%
+    #   - avg-rt>1s
+
+  apiblaze:
+    requests:
+    - url: https://api.demoblaze.com/entries
+      label: Entries API
+      method: GET
+      follow-redirects: true
+      assert:
+        - contains: Items
+          regex: false
 
 reporting:
+- module: passfail
+  criteria:
+    Response Time Too High: avg-rt>300ms
 - module: junit-xml
-  filename: /tmp/artifacts/report.xml
-  
+  filename: report.xml
+  data-source: pass-fail
